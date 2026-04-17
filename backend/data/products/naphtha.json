@@ -1,0 +1,91 @@
+{
+  "product": "Naphtha",
+  "updatedAt": "2026-04-16T04:54:33.165Z",
+  "count": 12,
+  "data": [
+    {
+      "product": "Naphtha",
+      "month": "April",
+      "imports": 203,
+      "exports": 575,
+      "consumption": 935
+    },
+    {
+      "product": "Naphtha",
+      "month": "May",
+      "imports": 119,
+      "exports": 718,
+      "consumption": 945
+    },
+    {
+      "product": "Naphtha",
+      "month": "June",
+      "imports": 33,
+      "exports": 676,
+      "consumption": 984
+    },
+    {
+      "product": "Naphtha",
+      "month": "July",
+      "imports": 61,
+      "exports": 604,
+      "consumption": 962
+    },
+    {
+      "product": "Naphtha",
+      "month": "August",
+      "imports": 41,
+      "exports": 582,
+      "consumption": 1065
+    },
+    {
+      "product": "Naphtha",
+      "month": "September",
+      "imports": 109,
+      "exports": 448,
+      "consumption": 1010
+    },
+    {
+      "product": "Naphtha",
+      "month": "October",
+      "imports": 114,
+      "exports": 281,
+      "consumption": 924
+    },
+    {
+      "product": "Naphtha",
+      "month": "November",
+      "imports": 144,
+      "exports": 507,
+      "consumption": 918
+    },
+    {
+      "product": "Naphtha",
+      "month": "December",
+      "imports": 8,
+      "exports": 385,
+      "consumption": 986
+    },
+    {
+      "product": "Naphtha",
+      "month": "January",
+      "imports": 82,
+      "exports": 304,
+      "consumption": 1057
+    },
+    {
+      "product": "Naphtha",
+      "month": "February",
+      "imports": 86,
+      "exports": 533,
+      "consumption": 1012
+    },
+    {
+      "product": "Naphtha",
+      "month": "March",
+      "imports": 0,
+      "exports": 0,
+      "consumption": 943
+    }
+  ]
+}

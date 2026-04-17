@@ -1,0 +1,91 @@
+{
+  "product": "LPG",
+  "updatedAt": "2026-04-16T04:54:33.165Z",
+  "count": 12,
+  "data": [
+    {
+      "product": "LPG",
+      "month": "April",
+      "imports": 1606,
+      "exports": 46,
+      "consumption": 2545
+    },
+    {
+      "product": "LPG",
+      "month": "May",
+      "imports": 1685,
+      "exports": 52,
+      "consumption": 2682
+    },
+    {
+      "product": "LPG",
+      "month": "June",
+      "imports": 1888,
+      "exports": 47,
+      "consumption": 2554
+    },
+    {
+      "product": "LPG",
+      "month": "July",
+      "imports": 1900,
+      "exports": 47,
+      "consumption": 2810
+    },
+    {
+      "product": "LPG",
+      "month": "August",
+      "imports": 1932,
+      "exports": 43,
+      "consumption": 2833
+    },
+    {
+      "product": "LPG",
+      "month": "September",
+      "imports": 1849,
+      "exports": 48,
+      "consumption": 2794
+    },
+    {
+      "product": "LPG",
+      "month": "October",
+      "imports": 1917,
+      "exports": 43,
+      "consumption": 2871
+    },
+    {
+      "product": "LPG",
+      "month": "November",
+      "imports": 1816,
+      "exports": 48,
+      "consumption": 2843
+    },
+    {
+      "product": "LPG",
+      "month": "December",
+      "imports": 1996,
+      "exports": 49,
+      "consumption": 3067
+    },
+    {
+      "product": "LPG",
+      "month": "January",
+      "imports": 2193,
+      "exports": 48,
+      "consumption": 3012
+    },
+    {
+      "product": "LPG",
+      "month": "February",
+      "imports": 1721,
+      "exports": 50,
+      "consumption": 2822
+    },
+    {
+      "product": "LPG",
+      "month": "March",
+      "imports": 0,
+      "exports": 0,
+      "consumption": 2379
+    }
+  ]
+}

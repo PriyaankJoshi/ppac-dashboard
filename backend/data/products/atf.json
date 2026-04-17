@@ -1,0 +1,91 @@
+{
+  "product": "ATF",
+  "updatedAt": "2026-04-16T04:54:33.165Z",
+  "count": 12,
+  "data": [
+    {
+      "product": "ATF",
+      "month": "April",
+      "imports": 0,
+      "exports": 487,
+      "consumption": 772
+    },
+    {
+      "product": "ATF",
+      "month": "May",
+      "imports": 0,
+      "exports": 752,
+      "consumption": 776
+    },
+    {
+      "product": "ATF",
+      "month": "June",
+      "imports": 0,
+      "exports": 675,
+      "consumption": 730
+    },
+    {
+      "product": "ATF",
+      "month": "July",
+      "imports": 0,
+      "exports": 645,
+      "consumption": 710
+    },
+    {
+      "product": "ATF",
+      "month": "August",
+      "imports": 0,
+      "exports": 556,
+      "consumption": 710
+    },
+    {
+      "product": "ATF",
+      "month": "September",
+      "imports": 0,
+      "exports": 689,
+      "consumption": 720
+    },
+    {
+      "product": "ATF",
+      "month": "October",
+      "imports": 0,
+      "exports": 506,
+      "consumption": 773
+    },
+    {
+      "product": "ATF",
+      "month": "November",
+      "imports": 0,
+      "exports": 599,
+      "consumption": 788
+    },
+    {
+      "product": "ATF",
+      "month": "December",
+      "imports": 0,
+      "exports": 629,
+      "consumption": 784
+    },
+    {
+      "product": "ATF",
+      "month": "January",
+      "imports": 0,
+      "exports": 500,
+      "consumption": 827
+    },
+    {
+      "product": "ATF",
+      "month": "February",
+      "imports": 0,
+      "exports": 362,
+      "consumption": 764
+    },
+    {
+      "product": "ATF",
+      "month": "March",
+      "imports": 0,
+      "exports": 0,
+      "consumption": 807
+    }
+  ]
+}
