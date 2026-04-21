@@ -4,8 +4,56 @@
   padding: 24px;
 }
 
+.pageNav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pageNav button.active {
+  background: #2b6cb0;
+  color: #fff;
+  border: 1px solid #2b6cb0;
+}
+
 h1 {
   margin-top: 0;
+  margin-bottom: 0;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.kpiArea {
+  display: flex;
+  gap: 10px;
+}
+
+.kpiCard {
+  min-width: 170px;
+  background: #fff;
+  border: 1px solid #dfe6ef;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: right;
+  box-shadow: 0 2px 8px rgba(31, 41, 55, 0.06);
+}
+
+.kpiLabel {
+  color: #4a5568;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.kpiValue {
+  color: #1a202c;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .controls {
@@ -18,6 +66,7 @@ h1 {
 select,
 button {
   padding: 8px 10px;
+  cursor: pointer;
 }
 
 .status {
@@ -47,6 +96,83 @@ button {
   border-radius: 8px;
 }
 
+/* Accordion Specific Styles */
+.accordionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.accordionSection {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  border-bottom: 1px solid transparent;
+}
+
+.accordionHeader:hover {
+  background: #f1f5f9;
+}
+
+.accordionHeader.active {
+  background: #edf2f7;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4a5568;
+  width: 20px;
+}
+
+.sourceTitle {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2d3748;
+}
+
+.articleBadge {
+  font-size: 12px;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: #4a5568;
+}
+
+.accordionContent {
+  padding: 16px;
+  background: #fff;
+  /* Simple entry animation */
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -57,4 +183,10 @@ td {
   text-align: left;
   padding: 10px;
   border-bottom: 1px solid #ececec;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #4a5568;
 }

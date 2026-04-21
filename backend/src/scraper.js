@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer");
 
 const IMPORT_EXPORT_URL = "https://ppac.gov.in/import-export";
 const CONSUMPTION_URL = "https://ppac.gov.in/consumption/products-wise";
+const CRUDE_PRICE_URL = "https://ppac.gov.in/prices/international-prices-of-crude-oil";
 const TARGET_PRODUCTS = ["LPG", "Naphtha", "ATF"];
 
 function normalizeProduct(productRaw) {
@@ -222,4 +223,78 @@ async function scrapeAllData() {
   }
 }
 
-module.exports = { scrapeAllData };
+async function scrapeCrudeKpis() {
+  const browser = await puppeteer.launch({ headless: "new" });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto(CRUDE_PRICE_URL, { waitUntil: "networkidle2", timeout: 60000 });
+    await page.waitForSelector("body", { timeout: 25000 });
+
+    const kpis = await page.evaluate(() => {
+      const textFrom = (node) => (node?.textContent || "").replace(/\s+/g, " ").trim();
+      const numberRegex = /^-?\d+(?:\.\d+)?$/;
+
+      let crudeOilPrice = null;
+      let unit = "$/bbl";
+      let icbRatio = null;
+
+      const selectedUnitText =
+        textFrom(document.querySelector("select option:checked")) ||
+        textFrom(document.querySelector("label[for*='unit'], .unit")) ||
+        "";
+      if (/inr/i.test(selectedUnitText)) unit = "INR/bbl";
+
+      const notesText = textFrom(document.body);
+
+      // Prefer explicit "as on" daily basket value from notes when available.
+      const asOnPriceMatch = notesText.match(
+        /Crude Oil Indian Basket as on\s+\d{1,2}\.\d{1,2}\.\d{4}\s+is\s*\$?\s*([0-9]+(?:\.[0-9]+)?)\s*\/?\s*bbl/i
+      );
+      if (asOnPriceMatch) {
+        crudeOilPrice = `${asOnPriceMatch[1]} $/bbl`;
+      }
+
+      const table = document.querySelector("table");
+      if (table) {
+        const rows = Array.from(table.querySelectorAll("tr"));
+        // Pick the first numeric price from monthly cells in data rows.
+        rows.forEach((row) => {
+          if (crudeOilPrice) return;
+          const cells = Array.from(row.querySelectorAll("td"));
+          if (cells.length < 2) return;
+
+          const values = cells
+            .slice(1)
+            .map((cell) => textFrom(cell).replace(/,/g, ""))
+            .filter((value) => numberRegex.test(value));
+          if (values.length) {
+            crudeOilPrice = `${values[0]} ${unit}`;
+          }
+        });
+      }
+      const ratioMatch = notesText.match(
+        /ICB Ratio(?:\s+for\s+[A-Za-z]+\s+\d{4})?\s+is\s+(\d+(?:\.\d+)?)\s*:\s*(\d+(?:\.\d+)?)/i
+      );
+      if (ratioMatch) {
+        icbRatio = `${ratioMatch[1]} : ${ratioMatch[2]}`;
+      }
+
+      return { icbRatio, crudeOilPrice };
+    });
+
+    if (!kpis.icbRatio && !kpis.crudeOilPrice) {
+      throw new Error("Could not extract ICB Ratio and crude oil price from PPAC page");
+    }
+
+    return {
+      ...kpis,
+      sourceUrl: CRUDE_PRICE_URL,
+      fetchedAt: new Date().toISOString(),
+    };
+  } finally {
+    await browser.close();
+  }
+}
+
+module.exports = { scrapeAllData, scrapeCrudeKpis };

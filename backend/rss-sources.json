@@ -1,0 +1,29 @@
+{
+  "EIA": [
+    "https://www.eia.gov/rss/todayinenergy.xml",
+    "https://www.eia.gov/about/new/WNtest3.php",
+    "https://www.eia.gov/rss/press_rss.xml"
+  ],
+  "Times Of India": [
+    "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+    "https://timesofindia.indiatimes.com/rssfeedmostrecent.cms",
+    "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
+    "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms",
+    "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms"
+  ],
+  "Economic Times": [
+    "https://economictimes.indiatimes.com/rssfeedstopstories.cms",
+    "https://economictimes.indiatimes.com/rssfeedsdefault.cms"
+  ],
+  "Oil Price": [
+    "https://oilprice.com/rss/main"
+  ],
+  "S&P Global": [
+    "https://www.spglobal.com/content/spglobal/energy/us/en/rss/oil.xml",
+    "https://www.spglobal.com/content/spglobal/energy/us/en/rss/natural-gas.xml",
+    "https://www.spglobal.com/content/spglobal/energy/us/en/rss/lng.xml"
+  ],
+  "PIB": [
+    "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=5&reg=5"
+  ]
+}

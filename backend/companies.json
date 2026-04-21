@@ -1,0 +1,14 @@
+{
+  "companies": [
+    {
+      "id": "hpcl",
+      "name": "HPCL (Hindustan Petroleum Corporation Ltd.)",
+      "bseUrl": "https://www.bseindia.com/corporates/shp_integrated.aspx?scripcd=500104"
+    },
+    {
+      "id": "reliance",
+      "name": "Reliance Industries",
+      "bseUrl": "https://www.bseindia.com/corporates/shp_integrated.aspx?scripcd=500325"
+    }
+  ]
+}
