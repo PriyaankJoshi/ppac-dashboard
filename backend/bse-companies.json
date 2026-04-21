@@ -1,0 +1,60 @@
+{
+  "companies": [
+    {
+      "id": "hpcl",
+      "name": "Hindustan Petroleum Corporation Ltd",
+      "shortName": "HPCL",
+      "ticker": "HINDPETRO",
+      "bseCode": "500104",
+      "url": "https://www.bseindia.com/stock-share-price/hindustan-petroleum-corporation-ltd/hindpetro/500104/integrated-filing-finance/"
+    },
+    {
+      "id": "iocl",
+      "name": "Indian Oil Corporation Ltd",
+      "shortName": "IOCL",
+      "ticker": "IOC",
+      "bseCode": "530965",
+      "url": "https://www.bseindia.com/stock-share-price/indian-oil-corporation-ltd/ioc/530965/integrated-filing-finance/"
+    },
+    {
+      "id": "bpcl",
+      "name": "Bharat Petroleum Corporation Ltd",
+      "shortName": "BPCL",
+      "ticker": "BPCL",
+      "bseCode": "500547",
+      "url": "https://www.bseindia.com/stock-share-price/bharat-petroleum-corporation-ltd/bpcl/500547/integrated-filing-finance/"
+    },
+    {
+      "id": "ongc",
+      "name": "Oil and Natural Gas Corporation Ltd",
+      "shortName": "ONGC",
+      "ticker": "ONGC",
+      "bseCode": "500312",
+      "url": "https://www.bseindia.com/stock-share-price/oil-natural-gas-corporation-ltd/ongc/500312/integrated-filing-finance/"
+    },
+    {
+      "id": "gail",
+      "name": "GAIL (India) Ltd",
+      "shortName": "GAIL",
+      "ticker": "GAIL",
+      "bseCode": "532155",
+      "url": "https://www.bseindia.com/stock-share-price/gail-india-ltd/gail/532155/integrated-filing-finance/"
+    },
+    {
+      "id": "reliance",
+      "name": "Reliance Industries Ltd",
+      "shortName": "RIL",
+      "ticker": "RELIANCE",
+      "bseCode": "500325",
+      "url": "https://www.bseindia.com/stock-share-price/reliance-industries-ltd/reliance/500325/integrated-filing-finance/"
+    },
+    {
+      "id": "chennai",
+      "name": "Chennai Petroleum Corporation Ltd",
+      "shortName": "CPCL",
+      "ticker": "CHENNPETRO",
+      "bseCode": "500110",
+      "url": "https://www.bseindia.com/stock-share-price/chennai-petroleum-corporation-ltd/chennpetro/500110/integrated-filing-finance/"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ const path = require("path");
 const Parser = require("rss-parser");
 const { scrapeAllData, scrapeCrudeKpis } = require("./scraper");
 const { mergeDatasets } = require("./dataProcessor");
+const bseRoutes = require("../bseRoutes"); // ← NEW
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,6 +21,9 @@ let crudeKpiCache = null;
 
 app.use(cors());
 app.use(express.json());
+
+// ── BSE routes ───────────────────────────────────────────────────────────────
+app.use("/api/bse", bseRoutes); // ← NEW
 
 async function ensureStorage() {
   await fs.mkdir(PRODUCTS_DIR, { recursive: true });
@@ -183,7 +187,7 @@ async function fetchNewsBySource(source, urls, keywordRegex) {
   };
 }
 
-app.get("/data", async (req, res) => {
+app.get("/api/data", async (req, res) => {
   try {
     const product = req.query.product;
     const refresh = String(req.query.refresh || "").toLowerCase() === "true";
@@ -227,11 +231,11 @@ app.get("/data", async (req, res) => {
   }
 });
 
-app.get("/health", (_req, res) => {
+app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
-app.get("/news", async (_req, res) => {
+app.get("/api/news", async (_req, res) => {
   try {
     const rssSources = await readJsonFile(RSS_SOURCES_FILE);
     const keywordConfig = await readJsonFile(KEYWORDS_FILE);
@@ -279,7 +283,7 @@ app.get("/news", async (_req, res) => {
   }
 });
 
-app.get("/kpis/crude", async (req, res) => {
+app.get("/api/kpis/crude", async (req, res) => {
   try {
     const refresh = String(req.query.refresh || "").toLowerCase() === "true";
     const isCacheValid =

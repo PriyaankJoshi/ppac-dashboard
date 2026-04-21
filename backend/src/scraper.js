@@ -76,7 +76,7 @@ async function pickLatestFinancialYear(page) {
   });
 
   if (changed) {
-    await page.waitForTimeout(1500);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     await page.waitForSelector("table", { timeout: 15000 });
   }
 }

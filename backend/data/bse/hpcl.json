@@ -1,0 +1,212 @@
+{
+  "companyId": "hpcl",
+  "companyName": "Hindustan Petroleum Corporation Ltd",
+  "shortName": "HPCL",
+  "ticker": "HINDPETRO",
+  "bseCode": "500104",
+  "sourceUrl": "https://www.bseindia.com/stock-share-price/hindustan-petroleum-corporation-ltd/hindpetro/500104/integrated-filing-finance/",
+  "scrapedAt": "2026-04-21T09:55:26.933Z",
+  "columns": [
+    "Year",
+    "Quarter",
+    "Status",
+    "Filing Date Time",
+    "Revised Filing Date Time",
+    "Revision Reason",
+    "XBRL Link"
+  ],
+  "rows": [
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Dec-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "21-01-2026 07:09:18 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_211202619918_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Dec-NineMths-2025",
+      "Status": "New",
+      "Filing Date Time": "21-01-2026 07:09:18 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_211202619918_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Dec-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "21-01-2026 07:08:45 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_211202619845_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Dec-NineMths-2025",
+      "Status": "New",
+      "Filing Date Time": "21-01-2026 07:08:45 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_211202619845_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Sep-Hly-2025",
+      "Status": "Revised",
+      "Filing Date Time": "-",
+      "Revised Filing Date Time": "17-12-2025 09:36:08 AM",
+      "Revision Reason": "e-mail received from BSE to rectify the Consolidated FR- In Cash Flow XBRL - Figures of Cash and cash equivalents cash flow statement at beginning of period not given, hence rectified.",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1712202593427_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Sep-Qtr-2025",
+      "Status": "Revised",
+      "Filing Date Time": "-",
+      "Revised Filing Date Time": "17-12-2025 09:36:08 AM",
+      "Revision Reason": "e-mail received from BSE to rectify the Consolidated FR- In Cash Flow XBRL - Figures of Cash and cash equivalents cash flow statement at beginning of period not given, hence rectified.",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1712202593427_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Sep-Hly-2025",
+      "Status": "New",
+      "Filing Date Time": "29-10-2025 11:13:19 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_29102025231226_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Sep-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "29-10-2025 11:13:14 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_29102025231226_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Sep-Hly-2025",
+      "Status": "New",
+      "Filing Date Time": "29-10-2025 11:13:09 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_29102025231210_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Sep-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "29-10-2025 11:13:06 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_29102025231210_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Jun-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "07-08-2025 06:11:16 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_782025181054_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Jun-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "07-08-2025 06:00:25 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_7820251807_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Mar-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "06-05-2025 08:52:44 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1062025211919_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Consolidated-Mar-Yearly-2025",
+      "Status": "New",
+      "Filing Date Time": "06-05-2025 08:52:44 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1062025211919_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Mar-Qtr-2025",
+      "Status": "New",
+      "Filing Date Time": "06-05-2025 08:35:32 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1062025212342_IFIndAs.html"
+      }
+    },
+    {
+      "Year": "2025",
+      "Quarter": "Standalone-Mar-Yearly-2025",
+      "Status": "New",
+      "Filing Date Time": "06-05-2025 08:35:32 PM",
+      "Revised Filing Date Time": "-",
+      "Revision Reason": "-",
+      "XBRL Link": {
+        "text": "XBRL",
+        "href": "https://www.bseindia.com/XBRLFILES/IFIndasDuplicateUploadDocument/Integrated_Finance_Ind_As_500104_1062025212342_IFIndAs.html"
+      }
+    }
+  ]
+}

@@ -25,5 +25,13 @@
   ],
   "PIB": [
     "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=5&reg=5"
+  ],
+  "Bloomberg": [
+    "https://feeds.bloomberg.com/markets/news.rss",
+    "https://feeds.bloomberg.com/economics/news.rss"
+  ],
+  "Hindustan Times": [
+    "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml",
+    "https://www.hindustantimes.com/feeds/rss/latest/rssfeed.xml"
   ]
 }

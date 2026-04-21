@@ -10,9 +10,10 @@ import {
   YAxis,
 } from "recharts";
 import "./App.css";
+import { BsePage } from "./BsePage"; // ← NEW
 
 const PRODUCTS = ["LPG", "Naphtha", "ATF"];
-const NEWS_PATH = "/news";
+const PATHS = { dashboard: "/", news: "/news", bse: "/bse" }; // ← NEW
 
 function formatDateTime(value) {
   if (!value) return "Unknown date";
@@ -332,9 +333,12 @@ function NewsPage() {
   );
 }
 
+// ---------------------------------------------------------------------------
+// App — root with three-tab navigation
+// ---------------------------------------------------------------------------
+
 function App() {
   const [pathname, setPathname] = useState(window.location.pathname);
-  const isNewsPage = pathname === NEWS_PATH;
 
   const navigateTo = (nextPath) => {
     if (window.location.pathname === nextPath) return;
@@ -348,25 +352,39 @@ function App() {
     return () => window.removeEventListener("popstate", handlePathChange);
   }, []);
 
+  const activePage = () => {
+    if (pathname === PATHS.news) return <NewsPage />;
+    if (pathname === PATHS.bse) return <BsePage />;   // ← NEW
+    return <DashboardPage />;
+  };
+
   return (
     <div className="app">
       <nav className="pageNav">
         <button
           type="button"
-          onClick={() => navigateTo("/")}
-          className={!isNewsPage ? "active" : ""}
+          onClick={() => navigateTo(PATHS.dashboard)}
+          className={pathname === PATHS.dashboard ? "active" : ""}
         >
           Dashboard
         </button>
         <button
           type="button"
-          onClick={() => navigateTo(NEWS_PATH)}
-          className={isNewsPage ? "active" : ""}
+          onClick={() => navigateTo(PATHS.news)}
+          className={pathname === PATHS.news ? "active" : ""}
         >
           RSS News
         </button>
+        {/* ── NEW TAB ── */}
+        <button
+          type="button"
+          onClick={() => navigateTo(PATHS.bse)}
+          className={pathname === PATHS.bse ? "active" : ""}
+        >
+          BSE Financials
+        </button>
       </nav>
-      {isNewsPage ? <NewsPage /> : <DashboardPage />}
+      {activePage()}
     </div>
   );
 }
