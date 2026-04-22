@@ -1,13 +1,28 @@
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
 .app {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px;
 }
 
+/* ── Navigation ── */
 .pageNav {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pageNav button {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  font-size: 14px;
+  padding: 10px 8px;
 }
 
 .pageNav button.active {
@@ -16,26 +31,33 @@
   border: 1px solid #2b6cb0;
 }
 
+/* ── Typography ── */
 h1 {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: clamp(18px, 4vw, 26px);
 }
 
+/* ── Page header + KPIs ── */
 .pageHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 .kpiArea {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .kpiCard {
-  min-width: 170px;
+  flex: 1;
+  min-width: 130px;
   background: #fff;
   border: 1px solid #dfe6ef;
   border-radius: 8px;
@@ -46,57 +68,92 @@ h1 {
 
 .kpiLabel {
   color: #4a5568;
-  font-size: 12px;
+  font-size: 11px;
   margin-bottom: 6px;
 }
 
 .kpiValue {
   color: #1a202c;
   font-weight: 700;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
 }
 
+/* ── Controls ── */
 .controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 select,
 button {
   padding: 8px 10px;
   cursor: pointer;
+  font-size: 14px;
 }
 
+select {
+  flex: 1;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+/* ── Status ── */
 .status {
   margin-bottom: 14px;
   color: #2d3748;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 .status.error {
   color: #c53030;
 }
 
+/* ── Chart ── */
 .chartCard {
   width: 100%;
-  height: 340px;
+  height: 280px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 8px;
-  box-sizing: border-box;
   margin-bottom: 18px;
 }
 
+/* ── Tables ── */
 .tableWrap {
   overflow-x: auto;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Accordion Specific Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid #ececec;
+  white-space: nowrap;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* ── Accordion ── */
 .accordionContainer {
   display: flex;
   flex-direction: column;
@@ -113,7 +170,7 @@ button {
 
 .accordionHeader {
   width: 100%;
-  padding: 14px 18px;
+  padding: 12px 14px;
   background: #f8fafc;
   border: none;
   display: flex;
@@ -121,6 +178,7 @@ button {
   align-items: center;
   transition: background 0.2s;
   border-bottom: 1px solid transparent;
+  gap: 8px;
 }
 
 .accordionHeader:hover {
@@ -135,7 +193,8 @@ button {
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .icon {
@@ -144,71 +203,71 @@ button {
   font-weight: bold;
   color: #4a5568;
   width: 20px;
+  flex-shrink: 0;
 }
 
 .sourceTitle {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   color: #2d3748;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .articleBadge {
-  font-size: 12px;
+  font-size: 11px;
   background: #e2e8f0;
   padding: 2px 8px;
   border-radius: 12px;
   color: #4a5568;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .accordionContent {
-  padding: 16px;
+  padding: 12px;
   background: #fff;
-  /* Simple entry animation */
   animation: slideDown 0.2s ease-out;
 }
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Table Styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+/* ── News table — hide Feed column on mobile ── */
+@media (max-width: 600px) {
+  .accordionContent table th:nth-child(3),
+  .accordionContent table td:nth-child(3) {
+    display: none;
+  }
 
-th,
-td {
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #ececec;
-}
-
-th {
-  background: #f9fafb;
-  font-weight: 600;
-  color: #4a5568;
+  .accordionContent table th:nth-child(1),
+  .accordionContent table td:nth-child(1) {
+    font-size: 11px;
+    white-space: normal;
+    min-width: 80px;
+  }
 }
 
 /* ==========================================================================
    BSE Integrated Filing Page
-   Append these rules to App.css
    ========================================================================== */
 
-/* Page layout */
 .bsePage {
   padding-bottom: 40px;
 }
 
 .bsePageHeader {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .bsePageSubtitle {
   margin: 6px 0 0;
   color: #718096;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* ── Company list ── */
@@ -218,7 +277,6 @@ th {
   gap: 10px;
 }
 
-/* ── Individual company row ── */
 .bseCompanyRow {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -232,10 +290,9 @@ th {
   border-color: #bee3f8;
 }
 
-/* ── Header / toggle button ── */
 .bseCompanyHeader {
   width: 100%;
-  padding: 14px 18px;
+  padding: 12px 14px;
   background: #f8fafc;
   border: none;
   display: flex;
@@ -245,12 +302,10 @@ th {
   transition: background 0.2s;
   text-align: left;
   border-bottom: 1px solid transparent;
+  gap: 8px;
 }
 
-.bseCompanyHeader:hover {
-  background: #ebf4ff;
-}
-
+.bseCompanyHeader:hover  { background: #ebf4ff; }
 .bseCompanyHeader.active {
   background: #ebf8ff;
   border-bottom: 1px solid #bee3f8;
@@ -259,7 +314,8 @@ th {
 .bseCompanyHeaderLeft {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
 }
 
 .bseToggleIcon {
@@ -275,28 +331,33 @@ th {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .bseCompanyName {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   color: #1a202c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bseCompanyTags {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .bseTag {
-  font-size: 11px;
+  font-size: 10px;
   background: #ebf8ff;
   color: #2b6cb0;
   border: 1px solid #bee3f8;
-  padding: 1px 7px;
+  padding: 1px 6px;
   border-radius: 10px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 .bseTag.secondary {
@@ -306,24 +367,26 @@ th {
 }
 
 .bseSectionCount {
-  font-size: 12px;
+  font-size: 11px;
   color: #4a5568;
   background: #e2e8f0;
-  padding: 2px 10px;
+  padding: 2px 8px;
   border-radius: 12px;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
-/* ── Expanded content area ── */
 .bseCompanyContent {
-  padding: 16px 18px 20px;
+  padding: 12px 14px 18px;
   animation: slideDown 0.2s ease-out;
 }
 
 .bseStatusBar {
   margin-bottom: 10px;
-  font-size: 13px;
+  font-size: 12px;
   color: #4a5568;
+  line-height: 1.6;
+  word-break: break-word;
 }
 
 .bseSourceLink {
@@ -332,13 +395,9 @@ th {
   font-weight: 600;
 }
 
-.bseSourceLink:hover {
-  text-decoration: underline;
-}
+.bseSourceLink:hover { text-decoration: underline; }
 
-.bseRefreshRow {
-  margin-bottom: 16px;
-}
+.bseRefreshRow { margin-bottom: 14px; }
 
 .bseRefreshBtn {
   padding: 6px 14px;
@@ -362,14 +421,12 @@ th {
   cursor: not-allowed;
 }
 
-/* ── Sections wrapper ── */
 .bseSections {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* ── Single table section ── */
 .bseTableSection {
   border: 1px solid #e2e8f0;
   border-radius: 7px;
@@ -381,7 +438,7 @@ th {
   padding: 10px 14px;
   background: #f7fafc;
   border-bottom: 1px solid #e2e8f0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #2d3748;
   letter-spacing: 0.2px;
@@ -390,64 +447,143 @@ th {
 
 .bseTableWrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* ── BSE table overrides (scoped to avoid colliding with existing tables) ── */
 .bseTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .bseTable th {
   background: #f9fafb;
   font-weight: 600;
   color: #4a5568;
-  padding: 9px 12px;
+  padding: 9px 10px;
   border-bottom: 2px solid #e2e8f0;
   white-space: nowrap;
 }
 
-.bseTable th.bseColParticulars {
+.bseTable th.bseColHeader {
   text-align: left;
-  min-width: 220px;
-}
-
-.bseTable th.bseColValue {
-  text-align: right;
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .bseTable td {
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-bottom: 1px solid #f0f4f8;
   vertical-align: top;
 }
 
-.bseTable td.bseCellLabel {
-  text-align: left;
-  color: #2d3748;
-  font-weight: 500;
-}
-
 .bseTable td.bseCellValue {
-  text-align: right;
   color: #1a202c;
-  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+.bseTable td.bseCellLink {
+  white-space: nowrap;
+}
+
+.bseXbrlLink {
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.bseXbrlLink:hover { text-decoration: underline; }
 
 .bseTable tr.bseRowSubheading td {
   background: #f7fafc;
   font-weight: 700;
   color: #2b6cb0;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
-.bseTable tr.bseRowData:hover td {
-  background: #f0f7ff;
+.bseTable tr.bseRowData:hover td { background: #f0f7ff; }
+
+/* ── BSE table: stack Revision Reason on very small screens ── */
+@media (max-width: 480px) {
+  .bseTable th,
+  .bseTable td {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+}
+
+/* ==========================================================================
+   Responsive breakpoints
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .app {
+    padding: 12px;
+  }
+
+  /* Stack page header vertically */
+  .pageHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* KPI cards side by side, full width */
+  .kpiArea {
+    width: 100%;
+  }
+
+  .kpiCard {
+    flex: 1;
+    min-width: 120px;
+    text-align: left;
+  }
+
+  /* Shorter chart on mobile */
+  .chartCard {
+    height: 220px;
+    padding: 4px;
+  }
+
+  /* Controls stack naturally */
+  .controls {
+    gap: 8px;
+  }
+
+  select {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageNav button {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  h1 {
+    font-size: 17px;
+  }
+
+  .chartCard {
+    height: 200px;
+  }
+
+  /* Make dashboard table font smaller */
+  .tableWrap table {
+    font-size: 12px;
+  }
+
+  .tableWrap th,
+  .tableWrap td {
+    padding: 7px 8px;
+  }
+
+  /* BSE company name wraps on tiny screens */
+  .bseCompanyName {
+    white-space: normal;
+    font-size: 13px;
+  }
 }

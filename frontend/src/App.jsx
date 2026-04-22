@@ -10,10 +10,10 @@ import {
   YAxis,
 } from "recharts";
 import "./App.css";
-import { BsePage } from "./BsePage"; // ← NEW
+import { BsePage } from "./BsePage";
 
 const PRODUCTS = ["LPG", "Naphtha", "ATF"];
-const PATHS = { dashboard: "/", news: "/news", bse: "/bse" }; // ← NEW
+const PATHS = { dashboard: "/", news: "/news", bse: "/bse" };
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? "";
 
@@ -25,6 +25,19 @@ function formatDateTime(value) {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(parsed);
+}
+
+// Returns true if viewport width is <= given px
+function useIsMobile(breakpoint = 600) {
+  const [isMobile, setIsMobile] = useState(
+    () => window.innerWidth <= breakpoint
+  );
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [breakpoint]);
+  return isMobile;
 }
 
 function AccordionSection({ source, payload, isOpen, onToggle }) {
@@ -40,14 +53,17 @@ function AccordionSection({ source, payload, isOpen, onToggle }) {
           <span className="icon">{isOpen ? "−" : "+"}</span>
           <span className="sourceTitle">{source}</span>
         </div>
-        <span className="articleBadge">{payload.items?.length || 0} Articles</span>
+        <span className="articleBadge">
+          {payload.items?.length || 0} Articles
+        </span>
       </button>
 
       {isOpen && (
         <div className="accordionContent">
           {!!payload.errors?.length && (
             <div className="status error">
-              Feed errors: {payload.errors.map((item) => item.message).join(" | ")}
+              Feed errors:{" "}
+              {payload.errors.map((item) => item.message).join(" | ")}
             </div>
           )}
           <div className="tableWrap">
@@ -77,7 +93,9 @@ function AccordionSection({ source, payload, isOpen, onToggle }) {
                 ))}
                 {!payload.items?.length && (
                   <tr>
-                    <td colSpan="3">No matching news for configured keywords.</td>
+                    <td colSpan="3">
+                      No matching news for configured keywords.
+                    </td>
                   </tr>
                 )}
               </tbody>
@@ -98,31 +116,32 @@ function DashboardPage() {
   const [refreshedAt, setRefreshedAt] = useState(null);
   const [crudeKpis, setCrudeKpis] = useState(null);
   const [kpiError, setKpiError] = useState("");
+  const isMobile = useIsMobile(600);
 
-  const fetchData = useCallback(async (forceRefresh = false) => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch(
-        `${API_BASE}/api/data?product=${encodeURIComponent(product)}&refresh=${forceRefresh}`
-      );
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
+  const fetchData = useCallback(
+    async (forceRefresh = false) => {
+      setLoading(true);
+      setError("");
+      try {
+        const response = await fetch(
+          `${API_BASE}/api/data?product=${encodeURIComponent(product)}&refresh=${forceRefresh}`
+        );
+        if (!response.ok)
+          throw new Error(`Request failed with status ${response.status}`);
+        const payload = await response.json();
+        setRows(payload.data || []);
+        setFromCache(Boolean(payload.fromCache));
+        setRefreshedAt(payload.refreshedAt || null);
+      } catch (err) {
+        setError(err.message || "Could not fetch data");
+        setRows([]);
+        setRefreshedAt(null);
+      } finally {
+        setLoading(false);
       }
-
-      const payload = await response.json();
-      setRows(payload.data || []);
-      setFromCache(Boolean(payload.fromCache));
-      setRefreshedAt(payload.refreshedAt || null);
-    } catch (err) {
-      setError(err.message || "Could not fetch data");
-      setRows([]);
-      setRefreshedAt(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [product]);
+    },
+    [product]
+  );
 
   useEffect(() => {
     fetchData(false);
@@ -131,10 +150,11 @@ function DashboardPage() {
   const fetchCrudeKpis = useCallback(async (forceRefresh = false) => {
     setKpiError("");
     try {
-      const response = await fetch(`${API_BASE}/api/kpis/crude?refresh=${forceRefresh}`);
-      if (!response.ok) {
+      const response = await fetch(
+        `${API_BASE}/api/kpis/crude?refresh=${forceRefresh}`
+      );
+      if (!response.ok)
         throw new Error(`Request failed with status ${response.status}`);
-      }
       const payload = await response.json();
       setCrudeKpis(payload);
     } catch (err) {
@@ -174,7 +194,9 @@ function DashboardPage() {
         <h1>PPAC Product Dashboard</h1>
         <div className="kpiArea">
           <div className="kpiCard">
-            <div className="kpiLabel">ICB Ratio - <b> Sweet : Sour </b> </div>
+            <div className="kpiLabel">
+              ICB Ratio - <b>Sweet : Sour</b>
+            </div>
             <div className="kpiValue">{crudeKpis?.icbRatio || "--"}</div>
           </div>
           <div className="kpiCard">
@@ -186,7 +208,11 @@ function DashboardPage() {
 
       <div className="controls">
         <label htmlFor="product">Product</label>
-        <select id="product" value={product} onChange={(e) => setProduct(e.target.value)}>
+        <select
+          id="product"
+          value={product}
+          onChange={(e) => setProduct(e.target.value)}
+        >
           {PRODUCTS.map((item) => (
             <option key={item} value={item}>
               {item}
@@ -202,22 +228,55 @@ function DashboardPage() {
       {error && <div className="status error">Error: {error}</div>}
       {!loading && !error && (
         <div className="status">
-          Source: {fromCache ? "Cache" : "Live scrape"} | Last refreshed: {readableRefreshedAt}
+          Source: {fromCache ? "Cache" : "Live scrape"} | Last refreshed:{" "}
+          {readableRefreshedAt}
         </div>
       )}
       {kpiError && <div className="status error">KPI Error: {kpiError}</div>}
 
       <div className="chartCard">
-        <ResponsiveContainer width="100%" height={320}>
-          <LineChart data={tableRows}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            data={tableRows}
+            margin={{
+              top: 5,
+              right: isMobile ? 10 : 20,
+              left: isMobile ? -20 : 0,
+              bottom: 5,
+            }}
+          >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis />
+            <XAxis
+              dataKey="month"
+              tick={{ fontSize: isMobile ? 10 : 12 }}
+              interval={isMobile ? 2 : 0}
+            />
+            <YAxis tick={{ fontSize: isMobile ? 10 : 12 }} width={isMobile ? 45 : 55} />
             <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="imports" name="Imports" stroke="#2b6cb0" />
-            <Line type="monotone" dataKey="exports" name="Exports" stroke="#2f855a" />
-            <Line type="monotone" dataKey="consumption" name="Consumption" stroke="#c05621" />
+            <Legend
+              wrapperStyle={{ fontSize: isMobile ? 11 : 13 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="imports"
+              name="Imports"
+              stroke="#2b6cb0"
+              dot={!isMobile}
+            />
+            <Line
+              type="monotone"
+              dataKey="exports"
+              name="Exports"
+              stroke="#2f855a"
+              dot={!isMobile}
+            />
+            <Line
+              type="monotone"
+              dataKey="consumption"
+              name="Consumption"
+              stroke="#c05621"
+              dot={!isMobile}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -266,9 +325,8 @@ function NewsPage() {
     setError("");
     try {
       const response = await fetch(`${API_BASE}/api/news`);
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`Request failed with status ${response.status}`);
-      }
       const payload = await response.json();
       setNewsPayload(payload);
     } catch (err) {
@@ -286,13 +344,18 @@ function NewsPage() {
   const sourceEntries = useMemo(() => {
     const sources = newsPayload?.sources || {};
     const preferredOrder = ["IEA", "EIA"];
-    const remainder = Object.keys(sources).filter((source) => !preferredOrder.includes(source));
-    const orderedSources = [...preferredOrder.filter((source) => sources[source]), ...remainder];
-
+    const remainder = Object.keys(sources).filter(
+      (source) => !preferredOrder.includes(source)
+    );
+    const orderedSources = [
+      ...preferredOrder.filter((source) => sources[source]),
+      ...remainder,
+    ];
     return orderedSources.map((source) => {
       const payload = sources[source] || { items: [], errors: [] };
       const sortedItems = [...(payload.items || [])].sort(
-        (left, right) => new Date(right.publishedAt) - new Date(left.publishedAt)
+        (left, right) =>
+          new Date(right.publishedAt) - new Date(left.publishedAt)
       );
       return [source, { ...payload, items: sortedItems }];
     });
@@ -335,10 +398,6 @@ function NewsPage() {
   );
 }
 
-// ---------------------------------------------------------------------------
-// App — root with three-tab navigation
-// ---------------------------------------------------------------------------
-
 function App() {
   const [pathname, setPathname] = useState(window.location.pathname);
 
@@ -356,7 +415,7 @@ function App() {
 
   const activePage = () => {
     if (pathname === PATHS.news) return <NewsPage />;
-    if (pathname === PATHS.bse) return <BsePage />;   // ← NEW
+    if (pathname === PATHS.bse) return <BsePage />;
     return <DashboardPage />;
   };
 
@@ -377,7 +436,6 @@ function App() {
         >
           RSS News
         </button>
-        {/* ── NEW TAB ── */}
         <button
           type="button"
           onClick={() => navigateTo(PATHS.bse)}
