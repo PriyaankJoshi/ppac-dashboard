@@ -202,7 +202,10 @@ async function extractPageData(page, defaultMetric) {
 }
 
 async function scrapeAllData() {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
 
   try {
     const importExportPage = await browser.newPage();
@@ -224,7 +227,10 @@ async function scrapeAllData() {
 }
 
 async function scrapeCrudeKpis() {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
 
   try {
     const page = await browser.newPage();
