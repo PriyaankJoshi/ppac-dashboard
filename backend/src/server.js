@@ -19,12 +19,7 @@ const rssParser = new Parser();
 const CRUDE_KPI_CACHE_TTL_MS = 15 * 60 * 1000;
 let crudeKpiCache = null;
 
-app.use(cors({
-  origin: [
-    "https://ppac-dashboard.vercel.app/",  // replace with your actual Vercel URL
-    "http://localhost:5173",
-  ],
-}));
+app.use(cors());
 app.use(express.json());
 
 // ── BSE routes ───────────────────────────────────────────────────────────────
