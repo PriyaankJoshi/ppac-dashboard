@@ -8,6 +8,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FinancialsTable } from "./FinancialsTable";
 
+const API_BASE = import.meta.env.VITE_API_BASE ?? "";
+
 // ---------------------------------------------------------------------------
 // CompanyRow — one accordion item per company
 // ---------------------------------------------------------------------------
@@ -27,7 +29,7 @@ function CompanyRow({ company, isOpen, onToggle }) {
       setState((prev) => ({ ...prev, loading: true, error: "" }));
       try {
         const response = await fetch(
-          `/api/bse/financials/${company.id}?refresh=${forceRefresh}`
+          `${API_BASE}/api/bse/financials/${company.id}?refresh=${forceRefresh}`
         );
         if (!response.ok) {
           const body = await response.json().catch(() => ({}));
@@ -158,7 +160,7 @@ export function BsePage() {
       setLoadingList(true);
       setListError("");
       try {
-        const response = await fetch("/api/bse/companies");
+        const response = await fetch(`${API_BASE}/api/bse/companies`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const payload = await response.json();
         setCompanies(payload.companies || []);

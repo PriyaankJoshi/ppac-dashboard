@@ -15,6 +15,8 @@ import { BsePage } from "./BsePage"; // ← NEW
 const PRODUCTS = ["LPG", "Naphtha", "ATF"];
 const PATHS = { dashboard: "/", news: "/news", bse: "/bse" }; // ← NEW
 
+const API_BASE = import.meta.env.VITE_API_BASE ?? "";
+
 function formatDateTime(value) {
   if (!value) return "Unknown date";
   const parsed = new Date(value);
@@ -103,7 +105,7 @@ function DashboardPage() {
 
     try {
       const response = await fetch(
-        `/api/data?product=${encodeURIComponent(product)}&refresh=${forceRefresh}`
+        `${API_BASE}/api/data?product=${encodeURIComponent(product)}&refresh=${forceRefresh}`
       );
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
@@ -129,7 +131,7 @@ function DashboardPage() {
   const fetchCrudeKpis = useCallback(async (forceRefresh = false) => {
     setKpiError("");
     try {
-      const response = await fetch(`/api/kpis/crude?refresh=${forceRefresh}`);
+      const response = await fetch(`${API_BASE}/api/kpis/crude?refresh=${forceRefresh}`);
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
@@ -263,7 +265,7 @@ function NewsPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("/api/news");
+      const response = await fetch("${API_BASE}/api/news");
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
