@@ -265,7 +265,7 @@ function NewsPage() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("${API_BASE}/api/news");
+      const response = await fetch(`${API_BASE}/api/news`);
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
       }
