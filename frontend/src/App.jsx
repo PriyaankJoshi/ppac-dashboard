@@ -279,6 +279,7 @@ function DashboardPage() {
             />
           </LineChart>
         </ResponsiveContainer>
+        <div className="chartFootnote">All values in Thousand Metric Tonnes (TMT)</div>
       </div>
 
       <div className="tableWrap">
